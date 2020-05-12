@@ -1,5 +1,8 @@
 package sample;
 
+import Data.Factura;
+import JSONmanager.JSONreader;
+import XMLmanager.XMLreader;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,6 +17,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
@@ -35,8 +39,6 @@ public class Controller {
 
         ListView<String> listViewFacturas = new ListView<>();
         listViewFacturas.setMinHeight(490);
-        for (int i = 0; i < 50; i++)
-            listViewFacturas.getItems().add("Factura " + i);
         vb = new VBox();
         vb.setPadding(new Insets(0, 0, 0, 40));
         vb.getChildren().add(listViewFacturas);
@@ -96,7 +98,16 @@ public class Controller {
             @Override public void handle(ActionEvent e) {
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Importar archivo");
-                fileChooser.showOpenDialog(stage);
+                File file = fileChooser.showOpenDialog(stage);
+                Factura factura = new Factura();
+                if(file.exists()) {
+                    if (file.toString().endsWith(".xml"))
+                        factura = XMLreader.readFactura(file.toString());
+                    else if (file.toString().endsWith(".json"))
+                        factura = JSONreader.readFactura(file.toString());
+
+                    listViewFacturas.getItems().add("Factura " + factura.getNUM_FACTURA());
+                }
             }
         });
 
