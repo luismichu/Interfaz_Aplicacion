@@ -15,10 +15,11 @@ import java.util.Date;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Factura factura = new Factura("CIF6789", "RAZ6789", 2
-                , "Desc factura", 2f, 21f, 5000f, new Date(), new Date());
-        JSONparser.parseFactura(factura);
-        XMLparser.parseFactura(factura);
+        Factura factura = new Factura("CIF1", "RAZ1", 4
+                , "Desc factura", 4f, 4f, 4f, new Date(), new Date());
+        //JSONparser.parseFactura(factura);
+        //XMLparser.parseFactura(factura);
+        //DataBase.insertFactura(factura);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         AnchorPane root = (AnchorPane)loader.load();

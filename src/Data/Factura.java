@@ -100,4 +100,8 @@ public class Factura {
     public void setFEC_VENCIMIENTO(Date FEC_VENCIMIENTO) {
         this.FEC_VENCIMIENTO = FEC_VENCIMIENTO;
     }
+
+    public String toString(){
+        return String.valueOf("Factura: " + getNUM_FACTURA());
+    }
 }

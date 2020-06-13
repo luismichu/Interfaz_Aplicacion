@@ -70,4 +70,8 @@ public class Proveedor {
     public void setFEC_HOMOLOGACION(Date FEC_HOMOLOGACION) {
         this.FEC_HOMOLOGACION = FEC_HOMOLOGACION;
     }
+
+    public String toString(){
+        return CIF_PROVEEDOR;
+    }
 }

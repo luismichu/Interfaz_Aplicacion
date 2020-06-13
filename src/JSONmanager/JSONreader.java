@@ -24,11 +24,7 @@ public class JSONreader {
         try (FileReader reader = new FileReader(ruta))
         {
             facturaJSON = (JSONObject) jsonParser.parse(reader);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
 
@@ -58,11 +54,7 @@ public class JSONreader {
         try (FileReader reader = new FileReader(ruta))
         {
             proveedorJSON = (JSONObject) jsonParser.parse(reader);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
 
